@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-app
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: student-app
+
+  template:
+    metadata:
+      labels:
+        app: student-app
+
+    spec:
+      containers:
+      - name: student-app
+        image: 7702473707/student-app:v1
+        ports:
+        - containerPort: 5000
+
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+            
